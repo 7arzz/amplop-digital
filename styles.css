@@ -1,0 +1,96 @@
+body {
+  background: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#amplop-container {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
+  perspective: 1000px;
+  overflow: visible; /* supaya surat bisa keluar */
+}
+
+/* Badan amplop */
+#amplop-body {
+  width: 100%;
+  height: 100%;
+  background: #f44336;
+  border-radius: 8px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Lipatan atas (flap amplop) */
+#amplop-flap {
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid #f44336;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 1s ease;
+  backface-visibility: hidden;
+}
+
+/* Surat putih yang keluar */
+#surat {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 90%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translate(-50%, 50px);
+  transition: all 1s ease;
+  z-index: 3;
+}
+
+/* Animasi buka amplop: flap kebuka & surat naik */
+#amplop-container.buka #amplop-flap {
+  transform: rotateX(-180deg);
+}
+
+#amplop-container.buka #surat {
+  opacity: 1;
+  transform: translate(-50%, -100px);
+}
+
+/* Heart di tengah */
+#love-icon {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  z-index: 5;
+  animation: pulse 2s infinite;
+  transition: opacity 0.5s ease;
+}
+
+/* Heart menghilang saat buka */
+#amplop-container.buka #love-icon {
+  opacity: 0;
+}
+
+/* Pulse effect heart */
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
