@@ -1,40 +1,47 @@
-let isBuka = false;
+const startBtn = document.getElementById("startBtn");
+const questionBox = document.getElementById("questionBox");
+const gaBtn = document.getElementById("ga-btn");
+const mauBtn = document.getElementById("mau-btn");
+const awalText = document.getElementById("awal"); // 👉 ambil elemen h1 awal
 
-function bukaAmplop() {
-  const container = document.getElementById("amplop-container");
-  const pesan = document.getElementById("pesan");
-  const lanjutan = document.getElementById("pesan-lanjutan");
+startBtn.addEventListener("click", () => {
+  startBtn.classList.add("hidden");
+  awalText.classList.add("hidden"); // 👉 sembunyikan teks awal
+  questionBox.classList.remove("hidden");
+});
 
-  const text = "Lu tuh orang yang paling spesial di hidup gue. Setiap detik bareng lu tuh bikin gue happy dan ngerasa lengkap. Gue gak tau kenapa bisa suka sama lu, Tapi gue cuma pengen habisin sisa waktu bareng lu.";
-  const extra = "By : 7arzz";
+mauBtn.addEventListener("click", () => {
+  window.location.href = "love-forever.html";
+});
 
-  container.classList.toggle("buka");
-  isBuka = !isBuka;
+gaBtn.addEventListener("mouseover", () => {
+  const x = Math.floor(Math.random() * (window.innerWidth - 100));
+  const y = Math.floor(Math.random() * (window.innerHeight - 100));
+  gaBtn.style.left = `${x}px`;
+  gaBtn.style.top = `${y}px`;
+});
 
-  if (isBuka) {
-    // Buka: reset isi & mulai ngetik
-    pesan.innerHTML = "";
-    lanjutan.innerHTML = "";
-    lanjutan.style.display = "none";
+// love-loves
+const heartsContainer = document.getElementById("hearts-container");
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = "100vh";
+  heartsContainer.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
 
-    let i = 0;
-    let typing = setInterval(() => {
-      if (i < text.length) {
-        pesan.innerHTML += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(typing);
-        // Setelah selesai ngetik pesan utama, munculkan teks lanjutan
-        setTimeout(() => {
-          lanjutan.style.display = "block";
-          lanjutan.innerHTML = extra;
-        }, 300); // jeda sebentar biar smooth
-      }
-    }, 50);
-  } else {
-    // Tutup: reset semuanya
-    pesan.innerHTML = "";
-    lanjutan.innerHTML = "";
-    lanjutan.style.display = "none";
-  }
-}
+mauBtn.addEventListener("click", () => {
+  // 🔥 Efek kembang api cinta
+  confetti({
+    particleCount: 150,
+    spread: 100,
+    origin: { y: 0.6 }
+  });
+
+  // Delay 1 detik baru pindah page
+  setTimeout(() => {
+    window.location.href = "love-forever.html";
+  }, 3000);
+});
