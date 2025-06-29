@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surat Cinta</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Kamu 💖</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="hearts" id="hearts-container"></div>
 
-<div id="amplop-container" onclick="bukaAmplop()">
-  <div id="love-icon"><i class="bi bi-heart-fill"></i></div>
-  <div id="amplop-body"></div>
-  <div id="amplop-flap"></div>
-  <div id="surat">
-    <p id="pesan"></p>
-    <p id="pesan-lanjutan" style="display: none;"></p> 
+  <!-- ✨ Teks Pembuka -->
+  <h1 id="awal" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+    Aku punya kejutan dikit nihh <br/> hehee
+  </h1>
+
+  <!-- ✨ Tombol Start -->
+  <button class="cta-btn" id="startBtn" data-aos="zoom-in" data-aos-delay="700" data-aos-duration="800">
+    Klik untuk lanjut
+  </button>
+
+  <!-- ✨ Kotak Pertanyaan -->
+  <div class="hidden" id="questionBox" data-aos="fade-up" data-aos-duration="1000">
+    <h1 data-aos="zoom-in-up" data-aos-delay="200">Kamu mau jadi pacarku? 😳</h1>
+    
+    <button class="option-btn" id="mau-btn" data-aos="fade-right" data-aos-delay="500">
+      Mau 💖
+    </button>
+    <button class="option-btn" id="ga-btn" data-aos="fade-left" data-aos-delay="600">
+      Nggak 😶
+    </button>
   </div>
-</div>
 
+  <!-- ✨ Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
